@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.ResourceInfoDao">
+
+	
+	<select id="findResourceById" resultType="entity.ResourceInfo">
+	    select * from resource where resource_id = #{0}
+	</select>
+	
+	
+     
+     <insert id="save" useGeneratedKeys="true" keyProperty="resource_id" parameterType="entity.ResourceInfo">
+         insert into resource (resource_name,resource_http_path,resource_disk_path,resource_type) 
+         values(#{resource_name},#{resource_http_path},#{resource_disk_path},#{resource_type})
+     </insert>
+	
+	
+	
+	
+</mapper>

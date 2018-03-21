@@ -1,0 +1,145 @@
+
+.main_left{
+  border-right:2px solid rgb(45,109,152);
+  width:69%;
+  float:left;
+  margin-right:5px;
+  padding-left:4px;
+  
+}
+
+label{
+   display:inline-block;
+   font-size:10px;
+   margin-right:5px;
+   width:64px;
+   text-align:left;
+   line-height:10px;
+}
+.first_line input[type="text"]{
+   margin-right:5px;
+   width:12%;
+}
+.dob_date{
+width: 127px;display: inline-block;margin-bottom: -5px;height: 20px;border-color: rgb(169, 169, 169);font-size: 13px;
+}
+.second_line input[type="text"]{
+   margin-right:5px;
+   width:150px;
+}
+.third_line input[type="text"]{
+   margin-right:5px;
+   width:150px;
+}
+.fourth_line select{
+   margin-right:5px;
+   width:150px;
+}
+.fifth_block{
+   display:inline-block;
+   margin-left:6px;
+   
+}
+.fifth_block div{
+   margin:0px;
+   padding:0px;
+   margin-bottom:5px;
+   
+}
+.fifth_line textarea{
+   height:160px;
+}
+.skill_set_div{
+	width:110px;font-size:10px;
+}
+.skill_set_span{
+	color:rgb(110,0,0);
+}
+.industry_div{
+	width:92px;font-size:10px;
+}
+.industry_span{
+	color:rgb(110,0,0);
+}
+
+.it_service_div{
+	width:92px;font-size:10px;
+}
+.it_service_span{
+	color:rgb(110,0,0);
+}
+
+.ninth_left{
+   float:left;
+  
+}
+.ninth_one{
+   margin:5px 0px;
+}
+.ninth_one div{
+   background-color:rgb(207,205,253);
+   display:inline-block;
+}
+.ninth_one_left div{
+   display:inline-block;
+}
+.main_left div{
+   margin-top:1px;
+}
+.main_right{
+ 
+  width:30%;
+  float:left;
+}
+.tab{
+   border-top:1px dashed black;
+   border-left:1px solid black;
+   border-right:1px solid black;
+   border-bottom:1px solid black;
+   width:400px;
+   height:534px;
+   clear:both;
+} 
+
+.tab_button{
+   margin:0px;
+   padding-left:2px;
+   padding-right:2px;
+   float:left;
+   height:20px;
+   border-top:1px dashed black;
+   border-left:1px dashed black;
+   border-right:1px dashed black;
+   border-top-left-radius:10px;
+   border-top-right-radius:10px;
+   font-size:8px;
+   text-align:center;
+   line-height:20px;
+   font-family:'ºÚÌå';
+}
+.content{
+   width:390px;
+   height:525px;
+   border: 1px solid black;
+   margin:4px;
+   background-color:rgb(225,223,218);
+}
+.havied{
+   position:relative;
+   top:1px;
+   border-top:1px solid black;
+   border-left:1px solid black;
+   border-right:1px solid black;
+   height:23px;
+   border-bottom:1px solid white;
+}
+.other{
+  margin-top:4px;
+  background-color:rgb(236,234,232);
+}
+.is_hidden{
+    display:none;
+}
+.is_block{
+    display:block;
+}

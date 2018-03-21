@@ -1,0 +1,17 @@
+﻿.nav{
+   border-top:3px solid black;
+   height:40px;
+   min-width:600px ;
+   width:100%;
+}
+.nav .nav_one{
+   width:150px;
+   height:40px;
+   border-right:3px solid black;
+   float:left;
+   font-size:20px;
+   text-align:center;
+   line-height:40px;
+   font-weight:999;
+   
+}

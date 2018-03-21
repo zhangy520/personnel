@@ -1,0 +1,29 @@
+.hearder{
+   padding-left:20px;
+   margin:10px 0px;
+   height:36px;
+   line-height:40px;
+}
+.title{
+	color:red;
+	float:left;
+	font-weight:999;
+	font-size:25px;
+}
+.hearder .user{
+   float:right;
+}
+.user .name{
+   border:1px solid red;
+   float:right;
+   width:150px;
+   background-color:red;
+   font-size:20px;
+   
+}
+.user_key{
+	color:red;
+	float:left;
+	font-size:25px;
+	font-family:'ËÎÌו';
+}

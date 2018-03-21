@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.UserDao">
+
+	
+	<select id="findUserAll" resultMap="UserMap" >
+	    select a.*,u.user_id as u_user_id,u.user_account,u.pwd from user u left join user_auth ua on u.user_id=ua.user_id left join auth a on ua.auth_id = a.auth_id
+	    order by u.user_id
+	</select>
+	
+	<select id="findUserByAccountAndPwd" resultMap="UserMap" >
+	    select a.*,u.user_id as u_user_id,u.user_account,u.pwd from user u left join user_auth ua on u.user_id=ua.user_id left join auth a on ua.auth_id = a.auth_id
+	     where user_account=#{0} and pwd=#{1}
+	</select>
+	
+	<resultMap type="entity.User" id="UserMap">
+         <id property="user_id" column="u_user_id"/>
+         <result property="user_account" column="user_account"/>
+         <result property="pwd" column="pwd"/>
+         <collection   property="auth_list" ofType="entity.Auth">
+             <result property="auth_id" column="auth_id"/>
+             <result property="auth_code" column="auth_code"/>
+             <result property="auth_name" column="auth_name"/>
+             <result property="auth_http_path" column="auth_http_path"/>
+         </collection >
+     </resultMap>
+     
+     <delete id="deleteUserAuthByUserId" parameterType="int">
+        delete from user_auth where user_id=#{0,jdbcType=INTEGER}
+    </delete>
+    
+    <insert id="addUserAuthByUserId" >
+	    insert into user_auth (user_id,auth_id) values ${value}
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+        delete from user where user_id=#{_parameter,jdbcType=INTEGER}
+    </delete>
+    
+    <insert id="addUser" parameterType="entity.User">
+	    insert into user (user_account,pwd,user_name) values (#{user_account},#{pwd},#{user_name})
+	</insert>
+	
+	
+	<update id="updateUser" parameterType="entity.User">
+	    update user set user_account=#{user_account},pwd=#{pwd},user_name=#{user_name}
+	    where user_id=#{user_id}
+	</update>
+	
+	
+	
+	
+</mapper>

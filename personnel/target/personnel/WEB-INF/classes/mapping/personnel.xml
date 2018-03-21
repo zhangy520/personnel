@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.PersonnelDao">
+
+	
+	<select id="findPersonneAll" parameterType="entity.SearchPage" resultType="entity.Personnel" >
+	    select * from personnel 
+	    <if test="search_data!=null">
+	        where true
+	        <foreach collection="search_data" index="key" item="search_one" >
+	            <if test="search_one.value_name == 'all_filed'">
+	                <if test="search_one.value_value != ''">
+	                 and (first_name like #{search_one.value_value} or 
+	                 last_name like #{search_one.value_value} or
+	                 nick_name like #{search_one.value_value} or
+	                 email like #{search_one.value_value} or
+	                 mobile like #{search_one.value_value} or
+	                 mobile2 like #{search_one.value_value} or
+	                 home like #{search_one.value_value} or
+	                 
+	                 company like #{search_one.value_value} or
+	                 position like #{search_one.value_value} or
+	                 current_salary like #{search_one.value_value} or
+	                 expected_salary like #{search_one.value_value} or
+	                 persent_city like #{search_one.value_value} or
+	                 expected_city like #{search_one.value_value} or
+	                 
+	                 
+	                 expected_position like #{search_one.value_value} or
+	                 education like #{search_one.value_value} or
+	                 working_experience like #{search_one.value_value} or
+	                 working_ys like #{search_one.value_value} or
+	                 english like #{search_one.value_value} or
+	                 japanese like #{search_one.value_value} or
+	                 
+	                 
+	                 korean like #{search_one.value_value} or
+	                 academic like #{search_one.value_value} or
+	                 english_level like #{search_one.value_value} or
+	                 reminder like #{search_one.value_value} or
+	                 skillset like #{search_one.value_value} or
+	                 industry like #{search_one.value_value} or
+	                 
+	                 it_service like #{search_one.value_value} or
+	                 develop like #{search_one.value_value} or
+	                 personnel_sql like #{search_one.value_value} or
+	                 oracle_skill like #{search_one.value_value} 
+	                 )
+	                </if>
+	            </if>
+	            <if test="search_one.value_name != 'all_filed'">
+	                <if test="search_one.value_value != ''">
+	                    and ${search_one.value_name} like #{search_one.value_value}
+	                </if>
+	            </if>
+	            <!-- -->
+	        </foreach>
+	    </if>
+	    
+	    order by personnel_id desc
+	    <if test="#{page_size!=0}">
+	        limit #{page_start},#{page_end}
+	    </if>
+	</select>
+	
+	<select id="findPersonnelById" parameterType="int" resultType="entity.Personnel" >
+	    select * from personnel where personnel_id = #{personnel_id}
+	</select>
+
+	<insert id="save" parameterType="entity.Personnel">
+	    insert into personnel (first_name,last_name,
+	                           nick_name,sex,
+	                           dob,email,
+	                           mobile,mobile2,
+	                           home,company,
+	                           position,current_salary,
+	                           expected_salary,persent_city,
+	                           expected_city,expected_position,
+	                           education,working_experience,
+	                           working_ys,english,
+	                           japanese,korean,
+	                           academic,english_level,
+	                           reminder,skillset,
+	                           industry,it_service,
+	                           develop,personnel_sql,
+	                           oracle_skill,create_user,
+	                           resource_id)
+	     values(#{first_name},#{last_name},
+	     #{nick_name},#{sex},
+	     #{dob},#{email},
+	     #{mobile},#{mobile2},
+	     #{home},#{company},
+	     #{position},#{current_salary},
+	     #{expected_salary},#{persent_city},
+	     
+	     #{expected_city},#{expected_position},
+	     #{education},#{working_experience},
+	     #{working_ys},#{english},
+	     #{japanese},#{korean},
+	     
+	     #{academic},#{english_level},
+	     #{reminder},#{skillset},
+	     
+	     #{industry},#{it_service},
+	     #{develop},#{personnel_sql},
+	     
+	     #{oracle_skill},#{create_user},
+	     #{resource_id})
+	</insert>
+	
+	<update id="update" parameterType="entity.Personnel">
+	    update personnel set 
+	    first_name=#{first_name} ,
+	    last_name=#{last_name} ,
+	    nick_name=#{nick_name} ,
+	    sex=#{sex} ,
+	    dob=#{dob} ,
+	    email=#{email} ,
+	    mobile=#{mobile} ,
+	    mobile2=#{mobile2} ,
+	    home=#{home} ,
+	    company=#{company} ,
+	    position=#{position} ,
+	    current_salary=#{current_salary} ,
+	    expected_salary=#{expected_salary} ,
+	    persent_city=#{persent_city} ,
+	    expected_city=#{expected_city} ,
+	    expected_position=#{expected_position} ,
+	    education=#{education} ,
+	    working_experience=#{working_experience} ,
+	    working_ys=#{working_ys} ,
+	    english=#{english} ,
+	    japanese=#{japanese} ,
+	    korean=#{korean} ,
+	    academic=#{academic} ,
+	    english_level=#{english_level} ,
+	    reminder=#{reminder} ,
+	    skillset=#{skillset} ,
+	    industry=#{industry} ,
+	    it_service=#{it_service} ,
+	    develop=#{develop} ,
+	    personnel_sql=#{personnel_sql} ,
+	    oracle_skill=#{oracle_skill} ,
+	    create_user=#{create_user} ,
+	    resource_id=#{resource_id}
+	     
+	    where personnel_id =#{personnel_id}
+	</update>
+	
+	<select id="getPersonnelPageCount" parameterType="entity.SearchPage" resultType="int" >
+	    select count(*) from personnel where true
+	    <if test="search_data!=null">
+	        
+	        <foreach collection="search_data" index="key" item="search_one" >
+	            <if test="search_one.value_name == 'all_filed'">
+	                <if test="search_one.value_value != ''">
+	                 and (first_name like #{search_one.value_value} or 
+	                 last_name like #{search_one.value_value} or
+	                 nick_name like #{search_one.value_value} or
+	                 email like #{search_one.value_value} or
+	                 mobile like #{search_one.value_value} or
+	                 mobile2 like #{search_one.value_value} or
+	                 home like #{search_one.value_value}
+	                 
+	                 )
+	                </if>
+	            </if>
+	            <if test="search_one.value_name != 'all_filed'">
+	                <if test="search_one.value_value != ''">
+	                    and ${search_one.value_name} like #{search_one.value_value}
+	                </if>
+	            </if>
+	            <!-- -->
+	        </foreach>
+	    </if>
+	</select>
+	
+	<delete id="delete" parameterType="int">
+        delete from personnel where personnel_id=#{_parameter,jdbcType=INTEGER}
+    </delete>
+	
+	
+</mapper>

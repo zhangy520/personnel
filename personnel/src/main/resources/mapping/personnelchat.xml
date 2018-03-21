@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.PersonnelChatDao">
+
+	
+	<select id="findChatByPersionnelId" resultMap="ChatUserMap" >
+	    select * from personnel_chat p join user u on p.user_id=u.user_id where p.personnel_id = #{personnel_id}
+	</select>
+	
+	<resultMap type="entity.PersonnelChat" id="ChatUserMap">
+         <id property="chat_id" column="chat_id"/>
+         <result property="create_time" column="create_time"/>
+         <result property="content" column="content"/>
+         <result property="personnel_id" column="personnel_id"/>
+         <association property="user" javaType="entity.User">
+             <result property="user_account" column="user_account"/>
+         </association>
+     </resultMap>
+     
+     <insert id="save" parameterType="entity.PersonnelChat">
+         insert into personnel_chat (user_id,content,create_time,personnel_id) values(#{user_id},#{content},#{create_time},#{personnel_id})
+     </insert>
+	
+	
+	
+	
+</mapper>
